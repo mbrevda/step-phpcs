@@ -1,0 +1,9 @@
+name: phpcs
+version: 0.0.1
+description: Runs PHP CodeSniffer on the selected files
+keywords:
+  - php
+  - CodeSniffer
+  - phpcs
+  - PHP CodeSniffer
+

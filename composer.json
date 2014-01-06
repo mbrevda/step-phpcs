@@ -1,0 +1,13 @@
+{
+    "name": "mbrevda/step-phpcs",
+    "description": "Step that runs PHP CodeSniffer",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "1.*"
+    },
+    "authors": [
+        {
+            "name": "Moshe Brevda",
+            "email": "mbrevda@gmail.com"
+        }
+	]
+}
