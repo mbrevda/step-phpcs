@@ -16,6 +16,10 @@ if [ -z "$WERCKER_PHPCS_STANDARD" ];then
     WERCKER_PHPCS_STANDARD=PSR2
 fi
 
+if [ ! -f vendor/bin/phpcs ]; then
+    fail "could not find phpcs, please add it to your composer.json. See here for more: https://github.com/squizlabs/PHP_CodeSniffer#installation"
+fi
+
 vendor/bin/phpcs --standard=$WERCKER_PHPCS_STANDARD $WERCKER_PHPCS_DIRECTORY
 
 if [[ $ERR -ne "0" ]]; then
