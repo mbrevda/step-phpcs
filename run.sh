@@ -22,7 +22,7 @@ fi
 
 vendor/bin/phpcs --standard=$WERCKER_PHPCS_STANDARD $WERCKER_PHPCS_DIRECTORY
 
-if [[ $ERR -ne "0" ]]; then
+if [[ $? -ne "0" ]]; then
     fail "PHP CodeSniffer failed";
 else 
     success "PHP CodeSniffer completed successfully!";
