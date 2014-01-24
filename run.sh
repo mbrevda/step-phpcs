@@ -17,7 +17,7 @@ if [ -z "$WERCKER_PHPCS_STANDARD" ];then
 fi
 
 if [ -z "$WERCKER_PHPCS_REPORT" ];then
-    WERCKER_PHPCS_STANDARD=full
+    $WERCKER_PHPCS_REPORT=full
 fi
 
 if [ -z "$WERCKER_PHPCS_IGNORE" ];then
