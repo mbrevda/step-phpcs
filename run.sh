@@ -17,7 +17,7 @@ if [ -z "$WERCKER_PHPCS_STANDARD" ];then
 fi
 
 if [ -z "$WERCKER_PHPCS_REPORT" ];then
-    WERCKER_PHPCS_STANDARD=full
+    $WERCKER_PHPCS_REPORT=full
 fi
 
 if [ -z "$WERCKER_PHPCS_IGNORE" ];then
@@ -30,7 +30,7 @@ if [ ! -f vendor/bin/phpcs ]; then
     fail "could not find phpcs, please add it to your composer.json. See here for more: https://github.com/squizlabs/PHP_CodeSniffer#installation"
 fi
 
-vendor/bin/phpcs --standard=$WERCKER_PHPCS_STANDARD --report=$WERCKER_PHPCS_REPORT $WERCKER_PHPCS_IGNORE $WERCKER_PHPCS_DIRECTORY
+vendor/bin/phpcs --extensions=php --standard=$WERCKER_PHPCS_STANDARD --report=$WERCKER_PHPCS_REPORT $WERCKER_PHPCS_IGNORE $WERCKER_PHPCS_DIRECTORY
 
 if [[ $? -ne "0" ]]; then
     fail "PHP CodeSniffer failed";
