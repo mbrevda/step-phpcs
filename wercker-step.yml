@@ -1,5 +1,5 @@
 name: phpcs
-version: 0.0.4
+version: 0.0.5
 description: Runs PHP CodeSniffer on the selected files
 keywords:
   - php
