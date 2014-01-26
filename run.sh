@@ -17,22 +17,23 @@ then
     info "PHP CodeSniffer Found."
     PHPCS_PATH = "$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
 else
-    COMPOSER=$WERCKER_STEP_ROOT/composer.json composer install --no-interaction
+    COMPOSER = $WERCKER_STEP_ROOT/composer.json composer install --no-interaction
+    PHPCS_PATH = "$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
 fi
 
-if [[ $? -ne "0" ]]
+if [ $? -ne "0" ] || [ -z "$PHPCS_PATH" ]
 then
-    fail "Unable to install PHP CodeSniffer.";
+    fail "Unable to locate or install PHP CodeSniffer.";
 fi
 
 if [ -z "$WERCKER_PHPCS_DIRECTORY" ]
 then
-    fail 'missing "directory" option, please add this to the phpcs step in your wercker.yml'
+    fail "missing 'directory' option, please add this to the phpcs step in your wercker.yml"
 fi
 
 if [ -z "$WERCKER_PHPCS_STANDARD" ]
 then
-    info 'missing "standard" option, using PSR2. You can specify the standard in the phpcs step in your wercker.yml'
+    info "missing 'standard' option, using PSR2. You can specify the standard in the phpcs step in your wercker.yml"
     WERCKER_PHPCS_STANDARD = PSR2
 fi
 
@@ -51,9 +52,10 @@ fi
 info "Starting PHP CodeSniffer scanning."
 $PHPCS_PATH --extensions=php --standard=$WERCKER_PHPCS_STANDARD --report=$WERCKER_PHPCS_REPORT $WERCKER_PHPCS_IGNORE $WERCKER_PHPCS_DIRECTORY
 
-if [[ $? -ne "0" ]]; then
-    fail "PHP CodeSniffer failed.";
+if [ $? -ne "0" ]
+then
+    fail "PHP CodeSniffer failed."
 else 
-    success "PHP CodeSniffer completed successfully!";
+    success "PHP CodeSniffer completed successfully!"
 fi
 
