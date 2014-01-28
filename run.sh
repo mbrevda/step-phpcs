@@ -11,14 +11,14 @@ fi
 if which phpcs
 then
     info "PHP CodeSniffer Found."
-    PHPCS_PATH = "phpcs"
+    PHPCS_PATH="phpcs"
 elif [ -f WERCKER_SOURCE_DIR/vendor/bin/phpcs ]
 then
     info "PHP CodeSniffer Found."
-    PHPCS_PATH = "$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
+    PHPCS_PATH="$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
 else
-    COMPOSER = $WERCKER_STEP_ROOT/composer.json composer install --no-interaction
-    PHPCS_PATH = "$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
+    COMPOSER=$WERCKER_STEP_ROOT/composer.json composer install --no-interaction
+    PHPCS_PATH="$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
 fi
 
 if [ $? -ne "0" ] || [ -z "$PHPCS_PATH" ]
@@ -34,19 +34,19 @@ fi
 if [ -z "$WERCKER_PHPCS_STANDARD" ]
 then
     info "missing 'standard' option, using PSR2. You can specify the standard in the phpcs step in your wercker.yml"
-    WERCKER_PHPCS_STANDARD = PSR2
+    WERCKER_PHPCS_STANDARD="PSR2"
 fi
 
 if [ -z "$WERCKER_PHPCS_REPORT" ]
 then
-    WERCKER_PHPCS_REPORT = full
+    WERCKER_PHPCS_REPORT="full"
 fi
 
 if [ -z "$WERCKER_PHPCS_IGNORE" ]
 then
-    WERCKER_PHPCS_IGNORE = ""
+    WERCKER_PHPCS_IGNORE=""
 else
-    WERCKER_PHPCS_IGNORE = "--ignore='$WERCKER_PHPCS_IGNORE'"
+    WERCKER_PHPCS_IGNORE="--ignore='$WERCKER_PHPCS_IGNORE'"
 fi
 
 info "Starting PHP CodeSniffer scanning."
