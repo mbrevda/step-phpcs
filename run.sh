@@ -17,7 +17,7 @@ then
     info "PHP CodeSniffer Found."
     PHPCS_PATH="$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
 else
-    COMPOSER=composer require squizlabs/php_codesniffer:1.*
+    composer require squizlabs/php_codesniffer:1.*
     PHPCS_PATH="$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
 fi
 

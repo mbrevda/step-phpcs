@@ -2,8 +2,5 @@ box: wercker/php
 build:
     steps:
         - script:
-            name: Initialize composer
-            code: composer install --no-interaction --prefer-source
-        - script:
             name: test step
             code: bash test.sh
