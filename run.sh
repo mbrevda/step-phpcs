@@ -12,12 +12,12 @@ if which phpcs
 then
     info "PHP CodeSniffer Found."
     PHPCS_PATH="phpcs"
-elif [ -f WERCKER_SOURCE_DIR/vendor/bin/phpcs ]
+elif [ -f $WERCKER_SOURCE_DIR/vendor/bin/phpcs ]
 then
     info "PHP CodeSniffer Found."
     PHPCS_PATH="$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
 else
-    COMPOSER=$WERCKER_STEP_ROOT/composer.json composer install --no-interaction
+    COMPOSER=composer require squizlabs/php_codesniffer:1.*
     PHPCS_PATH="$WERCKER_SOURCE_DIR/vendor/bin/phpcs"
 fi
 
