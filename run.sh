@@ -50,7 +50,7 @@ else
 fi
 
 info "Starting PHP CodeSniffer scanning."
-$PHPCS_PATH --extensions=php --standard=$WERCKER_PHPCS_STANDARD --report=$WERCKER_PHPCS_REPORT $WERCKER_PHPCS_IGNORE $WERCKER_PHPCS_DIRECTORY
+$PHPCS_PATH -p --extensions=php --standard=$WERCKER_PHPCS_STANDARD --report=$WERCKER_PHPCS_REPORT $WERCKER_PHPCS_IGNORE $WERCKER_PHPCS_DIRECTORY
 
 if [ $? -ne "0" ]
 then
